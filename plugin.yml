@@ -1,0 +1,13 @@
+name: CustomEnchantments
+version: 1.0.0
+main: RTG\CE\Loader
+api: 2.1.0
+author: IG
+
+commands:
+    ce:
+        permission: ce.command
+        description: "CE Main Command!"
+permissions:
+    ce.command:
+        default: op
