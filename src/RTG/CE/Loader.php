@@ -9,6 +9,8 @@ use pocketmine\Player;
 use pocketmine\event\Listener;
 use pocketmine\command\CommandExecutor;
 
+use pocketmine\utils\TextFormat as TF;
+
 use RTG\CE\CMD\CECommand;
 
 class Loader extends PluginBase implements Listener {
@@ -32,6 +34,16 @@ class Loader extends PluginBase implements Listener {
         }
     }
     
+    public function callMoney() {
+        if($this->getServer()->getPluginManager()->getPlugin("EconomyAPI") == false) {
+            $this->getLogger()->warning(" This feature won't work properly. Disabling Plugin");
+            $this->setEnabled(false);
+        }
+        else {
+            return $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
+        }
+    }
+    
     public function onHurt(\pocketmine\event\entity\EntityDamageEvent $e) {
         
         $entity = $e->getEntity();
@@ -47,7 +59,7 @@ class Loader extends PluginBase implements Listener {
                     
                         if($hand->hasEnchantments(100)) {
                             
-                            
+                            // WIP
                             
                             
                         }
@@ -59,6 +71,39 @@ class Loader extends PluginBase implements Listener {
         
     }
     
+    public function opSword(Player $p) {
+        
+        $item = \pocketmine\entity\Item::get(\pocketmine\item\Item::DIAMOND_SWORD);
+        $item->addEnchantment(\pocketmine\item\enchantment\Enchantment::getEnchantment(13));
+        $get = $item->getLevel();
+        $item->setCustomName(TF::RED . "OP SWORD");
+        $p->getInventory()->addItem($item);
+        
+    }
+    
+    public function onWeaponUpgrade(Player $p, $n) {
+        
+        $hand = $p->getInventory()->getItemInHand();
+        $name = $hand->getCustomName();
+        $type = $hand->getId();
+        $lvl = (int) $n;
+            
+            switch($lvl) {
+                
+                case "1":
+                    
+                    $newItem = \pocketmine\entity\Item::get(\pocketmine\entity\Item::$type);
+                    $newItem->setLevel(1);
+                    $newItem->setCustomName($name . "I");
+                    $p->getInventory()->setItemInHand($newItem);
+                    $p->sendMessage("You weapon has been upgraded to Level: 1");
+                    
+                    return true;
+                break;
+                 
+            } 
+    }
+                    
     public function onDisable() {
         $this->getLogger()->warning("
                 DEBUG!");

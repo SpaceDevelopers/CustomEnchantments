@@ -20,10 +20,8 @@ use RTG\CE\Loader;
 
 class CECommand implements CommandExecutor {
     
-    public $plugin;
-    
-    public function __construct(Loader $plugin) {
-        $this->plugin; $plugin;
+    public function __construct(Loader $owner) {
+        $this->owner = $owner;
     }
     
     public function onCommand(CommandSender $sender, Command $command, $label, string $args) {
@@ -43,6 +41,27 @@ class CECommand implements CommandExecutor {
                                 
                                 return true;
                             break;
+                        
+                            case "buy":
+                                
+                                $sender->sendMessage(" -- Custom Enchantments Shop -- ");
+                                
+                                
+                                return true;
+                            break;
+                        
+                            case "upgrade":
+                                if(isset($args[1])) {
+                                    
+                                    $lvl = $args[1];
+                                    
+                                    $this->owner->onWeaponUpgrade($sender, $lvl);
+                                    
+                                }
+                                else {
+                                    $sender->sendMessage("Usage: /ce upgrade [level]");                              }
+                                return true;
+                            break;
                             
                             // WIP
                         // By IG
@@ -60,5 +79,5 @@ class CECommand implements CommandExecutor {
                 return true;
             break;
         }
-    } 
+    }
 }
