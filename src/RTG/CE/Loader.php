@@ -32,6 +32,33 @@ class Loader extends PluginBase implements Listener {
         }
     }
     
+    public function onHurt(\pocketmine\event\entity\EntityDamageEvent $e) {
+        
+        $entity = $e->getEntity();
+        $cause = $e->getCause();
+            
+            if($e instanceof \pocketmine\event\entity\EntityDamageByEntityEvent) {
+                
+                
+                $damager = $e->getDamager();
+                $hand = $damager->getInventory()->getItemInHand();
+                
+                    if(!$hand->hasEnchantments()) return false;
+                    
+                        if($hand->hasEnchantments(100)) {
+                            
+                            
+                            
+                            
+                        }
+                
+                
+            }
+        
+        
+        
+    }
+    
     public function onDisable() {
         $this->getLogger()->warning("
                 DEBUG!");
