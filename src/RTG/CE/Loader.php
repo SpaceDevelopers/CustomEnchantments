@@ -87,6 +87,12 @@ class Loader extends PluginBase implements Listener {
         $name = $hand->getCustomName();
         $type = $hand->getId();
         $lvl = (int) $n;
+        $wlvl = $hand->getLevel();
+        
+        if($lvl < $wlvl) { // Level checker
+            $p->sendMessage("You can't downgrade a weapon!");
+            return false;
+        }
             
             switch($lvl) {
                 
