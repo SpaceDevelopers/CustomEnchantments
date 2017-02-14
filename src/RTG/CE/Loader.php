@@ -3,7 +3,7 @@
 namespace RTG\CE;
 
 /* Essentials */
-use pocketmine\Plugin\PluginBase;
+use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\Player;
 use pocketmine\event\Listener;

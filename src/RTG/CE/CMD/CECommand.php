@@ -1,10 +1,8 @@
 <?php
 
 /* Essentials */
-use pocketmine\Plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\Player;
-use pocketmine\event\Listener;
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
