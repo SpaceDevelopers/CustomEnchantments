@@ -94,7 +94,7 @@ class Loader extends PluginBase implements Listener {
                     
                     $newItem = \pocketmine\entity\Item::get(\pocketmine\entity\Item::$type);
                     $newItem->setLevel(1);
-                    $newItem->setCustomName($name . "I");
+                    $newItem->setCustomName($name . "\n I");
                     $p->getInventory()->setItemInHand($newItem);
                     $p->sendMessage("You weapon has been upgraded to Level: 1");
                     
