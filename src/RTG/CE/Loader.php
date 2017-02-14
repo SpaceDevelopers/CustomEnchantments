@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * All rights reserved RTGDaCoder.
+ * DO NOT COPY OR PIRATE!
+ */
+
 namespace RTG\CE;
 
 /* Essentials */
@@ -8,7 +13,8 @@ use pocketmine\Server;
 use pocketmine\Player;
 use pocketmine\event\Listener;
 use pocketmine\command\CommandExecutor;
-
+use pocketmine\item\Item;
+use pocketmine\item\enchantment\Enchantment;
 use pocketmine\utils\TextFormat as TF;
 
 use RTG\CE\CMD\CECommand;
@@ -73,8 +79,8 @@ class Loader extends PluginBase implements Listener {
     
     public function opSword(Player $p) {
         
-        $item = \pocketmine\entity\Item::get(\pocketmine\item\Item::DIAMOND_SWORD);
-        $item->addEnchantment(\pocketmine\item\enchantment\Enchantment::getEnchantment(13));
+        $item = Item::get(Item::DIAMOND_SWORD);
+        $item->addEnchantment(Enchantment::getEnchantment(13));
         $get = $item->getLevel();
         $item->setCustomName(TF::RED . "OP SWORD");
         $p->getInventory()->addItem($item);
@@ -98,11 +104,22 @@ class Loader extends PluginBase implements Listener {
                 
                 case "1":
                     
-                    $newItem = \pocketmine\entity\Item::get(\pocketmine\entity\Item::$type);
+                    $newItem = Item::get(Item::$type);
                     $newItem->setLevel(1);
                     $newItem->setCustomName($name . "\n I");
                     $p->getInventory()->setItemInHand($newItem);
-                    $p->sendMessage("You weapon has been upgraded to Level: 1");
+                    $p->sendMessage("Your weapon has been upgraded to Level: 1");
+                    
+                    return true;
+                break;
+                
+                case "2":
+                    
+                    $newItem = Item::get(Item::$type);
+                    $newItem->setLevel(2);
+                    $newItem->setCustomName($name . "\n II");
+                    $p->getInventory()->setItemInHand($newItem);
+                    $p->sendMessage("Your weapon has been updated to Level: 2");
                     
                     return true;
                 break;

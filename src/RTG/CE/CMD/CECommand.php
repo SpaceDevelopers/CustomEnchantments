@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * All rights reserved RTGDaCoder.
+ * DO NOT COPY OR PIRATE!
+ */
+
 /* Essentials */
 use pocketmine\Server;
 use pocketmine\Player;
@@ -11,7 +16,7 @@ use pocketmine\utils\TextFormat as TF;
 use RTG\CE\Loader;
 
 /**
- * Description of CECommand
+ * A command execution file!
  *
  * @author RTG
  */
@@ -36,6 +41,7 @@ class CECommand implements CommandExecutor {
                                 $sender->sendMessage(" -- Custom Enchantments v1 --");
                                 $sender->sendMessage(" "); // for an empty line :D
                                 $sender->sendMessage("[CE] /ce buy - Purchase!");
+                                $sender->sendMessage("[CE] /ce upgrade [level]");
                                 
                                 return true;
                             break;
